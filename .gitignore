@@ -1,0 +1,100 @@
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+wheels/
+.eggs/
+lib/
+lib64/
+*.so
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.env.bak
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# mypy / ruff / pyright
+.mypy_cache/
+.ruff_cache/
+.pyright/
+
+# ─── Environment & Secrets ────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+!.env.example
+!.env.local.example
+
+# ─── Database ─────────────────────────────────────────────────────────────────
+backend/data/*.db
+backend/data/*.db-shm
+backend/data/*.db-wal
+# Keep backups out of version control
+backend/data/*.bak*
+
+# ─── Uploads ──────────────────────────────────────────────────────────────────
+backend/uploads/
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+backend/logs/
+*.log
+
+# ─── Node / Next.js ───────────────────────────────────────────────────────────
+node_modules/
+.npm
+frontend/.next/
+frontend/out/
+frontend/.cache/
+.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+out/
+
+# Vercel
+.vercel/
+
+# ─── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ─── IDE / Editor ─────────────────────────────────────────────────────────────
+.vscode/settings.json
+.vscode/launch.json
+.vscode/*.code-workspace
+.idea/
+*.suo
+*.user
+*.swp
+*.swo
+*~
+
+# ─── Claude Proxy ────────────────────────────────────────────────────────────
+claude-proxy/
+
+# ─── Misc ─────────────────────────────────────────────────────────────────────
+*.tmp
+*.bak
+*.orig

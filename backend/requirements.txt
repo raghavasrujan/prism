@@ -1,0 +1,63 @@
+# ============================================================
+# requirements.txt — generated from regex import scan of
+# backend/**/*.py, with version pins from pyproject.toml
+# ============================================================
+
+# --- Core web framework ---
+fastapi>=0.115
+uvicorn[standard]>=0.32
+starlette                   # direct starlette imports detected
+sse-starlette>=2.1
+
+# --- Data validation ---
+pydantic>=2.9
+pydantic-settings>=2.4
+email-validator>=2.2
+
+# --- Database ---
+sqlalchemy>=2.0
+alembic>=1.13
+
+# --- Auth / security ---
+argon2-cffi>=23
+pyjwt>=2.9
+cryptography>=43
+
+# --- HTTP / networking ---
+httpx>=0.27
+python-multipart>=0.0.12
+
+# --- Async / file utilities ---
+aiofiles>=24
+filelock                    # detected via import scan
+tenacity>=8.5
+
+# --- Logging / observability ---
+structlog>=24
+python-json-logger>=2.0
+
+# --- Misc detected via import scan ---
+keyring                     # detected via import scan
+redis                       # detected via import scan
+
+# --- Typing (backport) ---
+typing_extensions
+
+# ============================================================
+# Optional — LLM integrations (uncomment to enable)
+# ============================================================
+# langgraph>=0.2
+# langchain-core>=0.3
+# langchain-openai>=0.2
+# langchain-anthropic>=0.2
+# langchain-google-genai>=2.0
+# langchain-ollama>=0.2
+# tiktoken>=0.7
+
+# ============================================================
+# Dev / test dependencies
+# ============================================================
+pytest>=8
+pytest-asyncio>=0.24
+pytest-cov>=5
+ruff>=0.6

@@ -1,0 +1,274 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   Design tokens — warm cream + coral, dark-navy product
+   surfaces. Values are `R G B` triplets so Tailwind's
+   opacity modifiers (bg-primary/10) work against them.
+   ========================================================= */
+:root {
+  --canvas:               250 249 245; /* #FAF9F5 */
+  --surface-soft:         245 240 232; /* #F5F0E8 */
+  --surface-card:         239 233 222; /* #EFE9DE */
+  --surface-cream-strong: 232 224 210; /* #E8E0D2 */
+
+  --hairline:             230 223 216; /* #E6DFD8 */
+  --hairline-soft:        235 230 223; /* #EBE6DF */
+
+  --ink:                  20 20 19;    /* #141413 */
+  --body:                 61 61 58;    /* #3D3D3A */
+  --body-strong:          37 37 35;    /* #252523 */
+  --muted:                108 106 100; /* #6C6A64 */
+  --muted-soft:           142 139 130; /* #8E8B82 */
+
+  --primary:              204 120 92;  /* #CC785C */
+  --primary-active:       169 88 62;   /* #A9583E */
+  --primary-disabled:     230 223 216; /* #E6DFD8 */
+  --on-primary:           255 255 255;
+
+  --surface-dark:         24 23 21;    /* #181715 */
+  --surface-dark-elevated:37 35 32;    /* #252320 */
+  --surface-dark-soft:    31 30 27;    /* #1F1E1B */
+  --on-dark:              250 249 245;
+  --on-dark-soft:         160 157 150;
+
+  --accent-teal:          93 184 166;  /* #5DB8A6 */
+  --accent-amber:         232 165 90;  /* #E8A55A */
+  --success:              93 184 114;  /* #5DB872 */
+  --warning:              212 160 23;  /* #D4A017 */
+  --error:                198 69 69;   /* #C64545 */
+
+  --font-serif: 'Cormorant Garamond', 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+
+  --shadow-card: 0 1px 2px 0 rgb(20 20 19 / 0.04), 0 1px 1px 0 rgb(20 20 19 / 0.03);
+  --shadow-popover: 0 12px 32px -8px rgb(20 20 19 / 0.16), 0 4px 12px -4px rgb(20 20 19 / 0.08);
+
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --canvas:               24 23 21;    /* #181715 */
+  --surface-soft:         31 30 27;    /* #1F1E1B */
+  --surface-card:         37 35 32;    /* #252320 */
+  --surface-cream-strong: 44 42 38;    /* #2C2A26 */
+
+  --hairline:             56 53 48;
+  --hairline-soft:        44 42 38;
+
+  --ink:                  250 249 245;
+  --body:                 216 213 206;
+  --body-strong:          240 238 232;
+  --muted:                160 157 150;
+  --muted-soft:           125 122 115;
+
+  --primary:              204 120 92;
+  --primary-active:       224 137 102;
+  --primary-disabled:     58 55 51;
+  --on-primary:           255 255 255;
+
+  --surface-dark:         14 13 12;
+  --surface-dark-elevated:33 31 28;
+  --surface-dark-soft:    18 17 16;
+  --on-dark:              250 249 245;
+  --on-dark-soft:         160 157 150;
+
+  --accent-teal:          107 196 179;
+  --accent-amber:         237 178 117;
+  --success:              107 199 126;
+  --warning:              224 178 58;
+  --error:                217 99 99;
+
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.3), 0 1px 1px 0 rgb(0 0 0 / 0.2);
+  --shadow-popover: 0 16px 40px -8px rgb(0 0 0 / 0.5), 0 4px 14px -4px rgb(0 0 0 / 0.32);
+
+  color-scheme: dark;
+}
+
+/* =========================================================
+   Base
+   ========================================================= */
+* {
+  border-color: rgb(var(--hairline));
+}
+
+html,
+body {
+  background-color: rgb(var(--canvas));
+  color: rgb(var(--ink));
+  font-family: var(--font-sans);
+  font-feature-settings: 'ss01', 'cv02';
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  transition: background-color 200ms ease;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: rgb(var(--primary) / 0.22);
+  color: rgb(var(--ink));
+}
+
+/* Thin, unobtrusive scrollbars that match the warm palette. */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--muted-soft) / 0.35);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--muted-soft) / 0.55);
+  background-clip: padding-box;
+}
+
+/* =========================================================
+   Sonner toast theme
+   ========================================================= */
+[data-sonner-toaster] {
+  --normal-bg: rgb(var(--surface-dark)) !important;
+  --normal-border: rgb(var(--surface-dark-elevated)) !important;
+  --normal-text: rgb(var(--on-dark)) !important;
+  --success-bg: rgb(var(--surface-dark)) !important;
+  --success-border: rgb(var(--success) / 0.4) !important;
+  --success-text: rgb(var(--on-dark)) !important;
+  --error-bg: rgb(var(--surface-dark)) !important;
+  --error-border: rgb(var(--error) / 0.4) !important;
+  --error-text: rgb(var(--on-dark)) !important;
+  font-family: var(--font-sans);
+}
+[data-sonner-toast] {
+  border-radius: 12px !important;
+}
+
+/* =========================================================
+   Stagger helpers — small, capped delays for list entrances.
+   Never exceed ~80ms between siblings (Emil: keep cascades short).
+   ========================================================= */
+.stagger-0 { animation-delay: 0ms; }
+.stagger-1 { animation-delay: 40ms; }
+.stagger-2 { animation-delay: 80ms; }
+.stagger-3 { animation-delay: 120ms; }
+.stagger-4 { animation-delay: 160ms; }
+.stagger-5 { animation-delay: 200ms; }
+
+/* =========================================================
+   Accessibility — respect reduced-motion system preference.
+   Keep opacity/color transitions; strip movement.
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   Responsive layout primitives used by the app shell.
+   ========================================================= */
+.app-sidebar {
+  transform: translateX(-100%);
+  transition: transform 260ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.app-sidebar[data-open='true'] {
+  transform: translateX(0);
+}
+@media (min-width: 1024px) {
+  .app-sidebar {
+    position: sticky;
+    transform: none;
+    transition: none;
+  }
+}
+
+.app-sidebar-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+.app-sidebar-backdrop[data-open='true'] {
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (min-width: 1024px) {
+  .app-sidebar-backdrop {
+    display: none;
+  }
+}
+
+/* Prose styling for rendered assistant markdown/text responses. */
+.prose-chat {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgb(var(--ink));
+}
+.prose-chat h1,
+.prose-chat h2,
+.prose-chat h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgb(var(--ink));
+  margin-top: 1.1em;
+  margin-bottom: 0.4em;
+}
+.prose-chat h2 { font-size: 1.25em; }
+.prose-chat h3 { font-size: 1.05em; }
+.prose-chat p { margin-bottom: 0.75em; }
+.prose-chat p:last-child { margin-bottom: 0; }
+.prose-chat ul,
+.prose-chat ol { padding-left: 1.25em; margin-bottom: 0.75em; }
+.prose-chat li { margin-bottom: 0.25em; }
+.prose-chat code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: rgb(var(--surface-card));
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.prose-chat pre {
+  background: rgb(var(--surface-dark));
+  color: rgb(var(--on-dark));
+  border-radius: 12px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin: 0.75em 0;
+  font-size: 0.875em;
+}
+.prose-chat pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
